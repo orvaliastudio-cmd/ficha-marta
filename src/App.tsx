@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Printer, Trash2, Save, FileText } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -72,6 +72,10 @@ const initialData: FormData = {
 export default function App() {
   const [formData, setFormData] = useState<FormData>(initialData);
   const printRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.title = "Ficha de Atendimento - Marta Ana Chiconato";
+  }, []);
 
   const handlePrint = () => {
     window.print();
