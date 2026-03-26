@@ -179,14 +179,14 @@ export default function App() {
             1. CLIENTE
             <div className="flex-grow border-t border-stone-200"></div>
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 gap-6 print:grid-cols-2">
             <div className="flex flex-col gap-1">
               <label className="text-xs uppercase text-stone-500">Data do Atendimento</label>
               <input
                 type="text"
                 value={formData.cliente.dataAtendimento}
                 onChange={(e) => updateField('cliente', 'dataAtendimento', e.target.value)}
-                className="bg-transparent outline-none py-1 focus:border-stone-800"
+                className="border-b border-stone-300 bg-transparent outline-none py-1 focus:border-stone-800"
                 placeholder="___/___/___"
               />
             </div>
@@ -196,11 +196,11 @@ export default function App() {
                 type="text"
                 value={formData.cliente.dataNascimento}
                 onChange={(e) => updateField('cliente', 'dataNascimento', e.target.value)}
-                className="bg-transparent outline-none py-1 focus:border-stone-800"
+                className="border-b border-stone-300 bg-transparent outline-none py-1 focus:border-stone-800"
                 placeholder="___/___/___"
               />
             </div>
-            <div className="sm:col-span-2 flex flex-col gap-1">
+            <div className="col-span-2 flex flex-col gap-1">
               <label className="text-xs uppercase text-stone-500">NOME DE BATISMO</label>
               <input
                 type="text"
@@ -456,13 +456,13 @@ export default function App() {
       <style>{`
         @media print {
           @page {
-            margin: 10mm;
+            margin: 15mm;
             size: A4;
           }
           body {
-            background: white;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+            background: white !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
           .print-container {
             width: 100% !important;
@@ -471,38 +471,67 @@ export default function App() {
             padding: 0 !important;
             box-shadow: none !important;
             background-color: #fdfcf8 !important;
+            display: block !important;
+            min-height: 0 !important;
           }
-            /* Fix for textareas with lines */
-            textarea {
-              border: none !important;
-              overflow: hidden !important;
-              -webkit-print-color-adjust: exact !important;
-              print-color-adjust: exact !important;
-              color: black !important;
-              font-size: 12pt !important;
-              background-image: linear-gradient(transparent, transparent 27px, #ccc 27px) !important;
-            }
+          /* Fix for textareas with lines */
+          textarea {
+            border: none !important;
+            overflow: hidden !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color: black !important;
+            font-size: 11pt !important;
+            background-image: linear-gradient(transparent, transparent 27px, #ccc 27px) !important;
+            line-height: 28px !important;
+          }
           /* Ensure sections don't break awkwardly */
           section {
             page-break-inside: avoid;
-            margin-bottom: 30px !important;
+            margin-bottom: 25px !important;
+            display: block !important;
           }
           input::placeholder {
-            color: transparent;
+            color: transparent !important;
           }
           /* Ensure images print well */
           img {
             max-width: 100% !important;
             display: block !important;
+            margin: 0 auto !important;
           }
           /* Ensure textareas and inputs show their content properly */
           input {
+            border: none !important;
             border-bottom: 1px solid #000 !important;
             color: black !important;
-            font-size: 12pt !important;
+            font-size: 11pt !important;
+            background: transparent !important;
           }
           h1, h2, h3, h4, label, span {
             color: black !important;
+          }
+          .grid {
+            display: grid !important;
+          }
+          .flex {
+            display: flex !important;
+          }
+          .flex-col {
+            flex-direction: column !important;
+          }
+          .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+          .col-span-2 {
+            grid-column: span 2 / span 2 !important;
+          }
+          .gap-6 {
+            gap: 1.5rem !important;
+          }
+          .grid {
+            display: grid !important;
+            gap: 1.5rem !important;
           }
         }
       `}</style>
