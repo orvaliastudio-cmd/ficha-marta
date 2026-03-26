@@ -126,6 +126,16 @@ export default function App() {
     }));
   };
 
+  // Dynamic Title for PDF Filename
+  useEffect(() => {
+    const clientName = formData.cliente.nomeCompleto.trim();
+    if (clientName) {
+      document.title = `Ficha Marta - ${clientName}`;
+    } else {
+      document.title = "Ficha Marta - Terapia Integrativa";
+    }
+  }, [formData.cliente.nomeCompleto]);
+
   return (
     <div className="min-h-screen bg-stone-100 py-4 md:py-8 px-2 md:px-4 print:p-0 print:bg-white">
       {/* Top Bar - Hidden on Print */}
