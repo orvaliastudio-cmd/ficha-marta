@@ -219,7 +219,7 @@ export default function App() {
             <div className="flex-grow border-t border-stone-200"></div>
           </h3>
           <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 print:flex-row print:items-center print:gap-3">
               <label className="text-sm font-medium min-w-[100px]">Alma:</label>
               <input
                 type="text"
@@ -228,7 +228,7 @@ export default function App() {
                 className="flex-grow border-b border-stone-400 bg-transparent outline-none py-1"
               />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 print:flex-row print:items-center print:gap-3">
               <label className="text-sm font-medium min-w-[100px]">Personalidade:</label>
               <input
                 type="text"
@@ -237,7 +237,7 @@ export default function App() {
                 className="flex-grow border-b border-stone-400 bg-transparent outline-none py-1"
               />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 print:flex-row print:items-center print:gap-3">
               <label className="text-sm font-medium min-w-[100px]">Destino:</label>
               <input
                 type="text"
@@ -291,7 +291,7 @@ export default function App() {
               { label: 'FÍSICO', nums: [4, 5] },
               { label: 'ESPIRITUAL', nums: [7, 9] },
             ].map((plano) => (
-              <div key={plano.label} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8">
+              <div key={plano.label} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8 print:flex-row print:items-center print:gap-8">
                 <span className="text-sm font-bold min-w-[140px] tracking-widest">— {plano.label}</span>
                 <div className="flex flex-wrap gap-4 sm:gap-8">
                   {plano.nums.map((num) => (
@@ -503,12 +503,21 @@ export default function App() {
           /* Ensure textareas and inputs show their content properly */
           input {
             border: none !important;
-            border-bottom: 1px solid #000 !important;
+            border-bottom: 1.5px solid #000 !important;
             color: black !important;
             font-size: 11pt !important;
             background: transparent !important;
+            width: 100% !important;
+            display: block !important;
+            padding-bottom: 2px !important;
+            margin-top: 4px !important;
           }
-          h1, h2, h3, h4, label, span {
+          label {
+            font-weight: bold !important;
+            font-size: 9pt !important;
+            color: #444 !important;
+          }
+          h1, h2, h3, h4, span {
             color: black !important;
           }
           .grid {
