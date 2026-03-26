@@ -159,7 +159,7 @@ export default function App() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-[210mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 min-h-screen md:min-h-[297mm] text-stone-900"
+        className="w-full max-w-[210mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
         ref={printRef}
       >
         {/* Header Banner */}
@@ -456,14 +456,53 @@ export default function App() {
       <style>{`
         @media print {
           @page {
-            margin: 0;
+            margin: 10mm;
             size: A4;
           }
           body {
             background: white;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+          .print-container {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            background-color: #fdfcf8 !important;
+          }
+            /* Fix for textareas with lines */
+            textarea {
+              border: none !important;
+              overflow: hidden !important;
+              -webkit-print-color-adjust: exact !important;
+              print-color-adjust: exact !important;
+              color: black !important;
+              font-size: 12pt !important;
+              background-image: linear-gradient(transparent, transparent 27px, #ccc 27px) !important;
+            }
+          /* Ensure sections don't break awkwardly */
+          section {
+            page-break-inside: avoid;
+            margin-bottom: 30px !important;
           }
           input::placeholder {
             color: transparent;
+          }
+          /* Ensure images print well */
+          img {
+            max-width: 100% !important;
+            display: block !important;
+          }
+          /* Ensure textareas and inputs show their content properly */
+          input {
+            border-bottom: 1px solid #000 !important;
+            color: black !important;
+            font-size: 12pt !important;
+          }
+          h1, h2, h3, h4, label, span {
+            color: black !important;
           }
         }
       `}</style>
