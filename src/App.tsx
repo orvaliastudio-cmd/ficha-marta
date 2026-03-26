@@ -163,7 +163,7 @@ export default function App() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-[210mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 print:m-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
+        className="w-full max-w-[160mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 print:m-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
         ref={printRef}
       >
         {/* Header Banner */}
@@ -282,6 +282,9 @@ export default function App() {
           </div>
         </section>
 
+        {/* Page Break for Print - Start Page 2 */}
+        <div className="break-before-page"></div>
+
         {/* Section 4: Planos de Consciência */}
         <section className="mb-8">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
@@ -346,10 +349,42 @@ export default function App() {
           </div>
         </section>
 
-        {/* Page Break for Print */}
-        <div className="print:break-before-page"></div>
+        {/* Page Break for Print - Start Page 3 */}
+        <div className="break-before-page"></div>
 
-        {/* Section 6: Análise Energética - Chakras */}
+        {/* Section 7: Pináculos - Now on Page 3 */}
+        <section className="mb-8 pt-8 print:pt-0">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl tracking-widest uppercase font-bold">Pináculos — <span className="italic text-[#8b2b2b]">Ciclos de Vida</span></h2>
+          </div>
+          <div className="grid grid-cols-1 gap-6">
+            {[
+              { key: 'p1', label: '1º PINÁCULO' },
+              { key: 'p2', label: '2º PINÁCULO' },
+              { key: 'p3', label: '3º PINÁCULO' },
+              { key: 'p4', label: '4º PINÁCULO' },
+            ].map((p) => (
+              <div key={p.key} className="border border-stone-300 p-6 rounded-sm">
+                <h4 className="text-sm font-bold uppercase tracking-widest mb-4">{p.label}</h4>
+                <textarea
+                  value={formData.pinaculos[p.key as keyof FormData['pinaculos']]}
+                  onChange={(e) => setFormData(prev => ({
+                    ...prev,
+                    pinaculos: { ...prev.pinaculos, [p.key]: e.target.value }
+                  }))}
+                  rows={6}
+                  className="w-full bg-transparent border-none outline-none resize-none leading-relaxed"
+                  style={{ backgroundImage: 'linear-gradient(transparent, transparent 27px, #e5e7eb 27px)', backgroundSize: '100% 28px' }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Page Break for Print - Start Page 4 */}
+        <div className="break-before-page"></div>
+
+        {/* Section 6: Análise Energética - Chakras - Now on Page 4 */}
         <section className="mb-12 pt-8 print:pt-0">
           <div className="text-center mb-8">
             <h2 className="text-2xl tracking-widest uppercase font-bold">Análise Energética — <span className="italic text-[#8b2b2b]">Chakras</span></h2>
@@ -417,71 +452,44 @@ export default function App() {
             Formulário de Análise Energética — Confidencial
           </div>
         </section>
-
-        {/* Page Break for Print */}
-        <div className="print:break-before-page"></div>
-
-        {/* Section 7: Pináculos */}
-        <section className="mb-8 pt-8 print:pt-0">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl tracking-widest uppercase font-bold">Pináculos — <span className="italic text-[#8b2b2b]">Ciclos de Vida</span></h2>
-          </div>
-          <div className="grid grid-cols-1 gap-6">
-            {[
-              { key: 'p1', label: '1º PINÁCULO' },
-              { key: 'p2', label: '2º PINÁCULO' },
-              { key: 'p3', label: '3º PINÁCULO' },
-              { key: 'p4', label: '4º PINÁCULO' },
-            ].map((p) => (
-              <div key={p.key} className="border border-stone-300 p-6 rounded-sm">
-                <h4 className="text-sm font-bold uppercase tracking-widest mb-4">{p.label}</h4>
-                <textarea
-                  value={formData.pinaculos[p.key as keyof FormData['pinaculos']]}
-                  onChange={(e) => setFormData(prev => ({
-                    ...prev,
-                    pinaculos: { ...prev.pinaculos, [p.key]: e.target.value }
-                  }))}
-                  rows={6}
-                  className="w-full bg-transparent border-none outline-none resize-none leading-relaxed"
-                  style={{ backgroundImage: 'linear-gradient(transparent, transparent 27px, #e5e7eb 27px)', backgroundSize: '100% 28px' }}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
       </motion.div>
 
       {/* Footer - Hidden on Print */}
-      <div className="max-w-4xl mx-auto mt-8 text-center text-stone-500 text-sm print:hidden">
+      <div className="max-w-4xl mx-auto mt-8 mb-12 text-center text-stone-500 text-sm print:hidden">
         <p>© 2026 Marta Ana Chiconato. Todos os direitos reservados.</p>
+        <p className="mt-2 text-xs">
+          Desenvolvido por <a href="https://www.orvalia.com.br" target="_blank" rel="noopener noreferrer" className="text-[#008686] font-semibold hover:text-[#006666] transition-colors">Orvalia Studio</a>
+        </p>
       </div>
 
       {/* Print Styles */}
       <style>{`
         @media print {
           @page {
-            margin: 0;
+            margin: 20mm;
             size: A4;
           }
           html, body {
             height: auto !important;
+            background: white !important;
           }
           * {
             box-sizing: border-box !important;
           }
           body {
-            background: white !important;
             margin: 0 !important;
             padding: 0 !important;
             overflow: visible !important;
+            overflow-x: hidden !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
           .print-container {
-            width: 210mm !important;
-            min-height: 297mm !important;
+            width: 100% !important;
+            max-width: 160mm !important;
+            min-height: 250mm !important;
             margin: 0 auto !important;
-            padding: 15mm !important;
+            padding: 5mm !important;
             box-shadow: none !important;
             background-color: #fdfcf8 !important;
             display: block !important;
@@ -513,6 +521,7 @@ export default function App() {
           /* Ensure images print well */
           img {
             max-width: 100% !important;
+            height: auto !important;
             display: block !important;
             margin: 0 auto !important;
           }
@@ -551,6 +560,9 @@ export default function App() {
           }
           .col-span-2 {
             grid-column: span 2 / span 2 !important;
+          }
+          .break-before-page {
+            break-before: page !important;
           }
         }
       `}</style>
