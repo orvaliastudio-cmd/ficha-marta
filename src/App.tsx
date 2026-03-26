@@ -292,7 +292,7 @@ export default function App() {
         </section>
 
         {/* Section 3: Leitura */}
-        <section className="mb-4 print:mb-0">
+        <section className="mb-4 print:mb-0 print:break-after-page">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             3. LEITURA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -320,11 +320,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Page Break for Print - Start Page 2 */}
-        <div className="break-before-page"></div>
-
         {/* Section 4: Planos de Consciência */}
-        <section className="mb-8 print:mt-4">
+        <section className="mb-8 print:mt-8 print:break-before-page">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             4. PLANOS DE CONSCIÊNCIA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -606,13 +603,16 @@ export default function App() {
           .col-span-2 {
             grid-column: span 2 / span 2 !important;
           }
-          .break-before-page {
-            display: block !important;
+          .print\:break-before-page {
             break-before: page !important;
             page-break-before: always !important;
-            height: 1px !important;
-            margin-top: -1px !important;
-            clear: both !important;
+            display: block !important;
+          }
+          .print\:break-after-page {
+            break-after: page !important;
+            page-break-after: always !important;
+            display: block !important;
+            margin-bottom: 0 !important;
           }
         }
       `}</style>
