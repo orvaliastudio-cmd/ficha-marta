@@ -73,10 +73,6 @@ export default function App() {
   const [formData, setFormData] = useState<FormData>(initialData);
   const printRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    document.title = "Ficha de Atendimento - Marta Ana Chiconato";
-  }, []);
-
   const handlePrint = () => {
     window.print();
   };
