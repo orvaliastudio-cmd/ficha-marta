@@ -353,28 +353,28 @@ export default function App() {
         <div className="break-before-page"></div>
 
         {/* Section 7: Pináculos - Now on Page 3 */}
-        <section className="mb-8 pt-8 print:pt-0">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl tracking-widest uppercase font-bold">Pináculos — <span className="italic text-[#8b2b2b]">Ciclos de Vida</span></h2>
+        <section className="mb-6 pt-4 print:pt-0 print:mb-4">
+          <div className="text-center mb-6 print:mb-2">
+            <h2 className="text-xl tracking-widest uppercase font-bold print:text-lg">Pináculos — <span className="italic text-[#8b2b2b]">Ciclos de Vida</span></h2>
           </div>
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-4 print:gap-2">
             {[
               { key: 'p1', label: '1º PINÁCULO' },
               { key: 'p2', label: '2º PINÁCULO' },
               { key: 'p3', label: '3º PINÁCULO' },
               { key: 'p4', label: '4º PINÁCULO' },
             ].map((p) => (
-              <div key={p.key} className="border border-stone-300 p-6 rounded-sm">
-                <h4 className="text-sm font-bold uppercase tracking-widest mb-4">{p.label}</h4>
+              <div key={p.key} className="border border-stone-300 p-3 rounded-sm print:p-2">
+                <h4 className="text-xs font-bold uppercase tracking-widest mb-2 print:mb-1">{p.label}</h4>
                 <textarea
                   value={formData.pinaculos[p.key as keyof FormData['pinaculos']]}
                   onChange={(e) => setFormData(prev => ({
                     ...prev,
                     pinaculos: { ...prev.pinaculos, [p.key]: e.target.value }
                   }))}
-                  rows={6}
-                  className="w-full bg-transparent border-none outline-none resize-none leading-relaxed"
-                  style={{ backgroundImage: 'linear-gradient(transparent, transparent 27px, #e5e7eb 27px)', backgroundSize: '100% 28px' }}
+                  rows={4}
+                  className="w-full bg-transparent border-none outline-none resize-none leading-relaxed text-sm print:text-xs"
+                  style={{ backgroundImage: 'linear-gradient(transparent, transparent 23px, #e5e7eb 23px)', backgroundSize: '100% 24px' }}
                 />
               </div>
             ))}
@@ -385,13 +385,13 @@ export default function App() {
         <div className="break-before-page"></div>
 
         {/* Section 6: Análise Energética - Chakras - Now on Page 4 */}
-        <section className="mb-12 pt-8 print:pt-0">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl tracking-widest uppercase font-bold">Análise Energética — <span className="italic text-[#8b2b2b]">Chakras</span></h2>
+        <section className="mb-6 pt-4 print:pt-0 print:mb-4">
+          <div className="text-center mb-4 print:mb-2">
+            <h2 className="text-xl tracking-widest uppercase font-bold print:text-lg">Análise Energética — <span className="italic text-[#8b2b2b]">Chakras</span></h2>
           </div>
           
           <div className="relative">
-            <div className="space-y-10">
+            <div className="space-y-4 print:space-y-2">
               {[
                 { key: 'coronario', label: 'Coronário', icon: 'https://i.ibb.co/Vs1dW6X/1-coronario.png' },
                 { key: 'frontal', label: 'Frontal', icon: 'https://i.ibb.co/xKNqLz36/2-frontal.png' },
@@ -401,46 +401,46 @@ export default function App() {
                 { key: 'esplenico', label: 'Chakra Esplênico', icon: 'https://i.ibb.co/LXfy4DFW/6-espl-nico.png' },
                 { key: 'basico', label: 'Chakra Básico', icon: 'https://i.ibb.co/8g4nnQvh/7-basico.png' },
               ].map((chakra) => (
-                <div key={chakra.key} className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
-                  <div className="w-[100px] flex justify-center">
+                <div key={chakra.key} className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-6 print:flex-row print:items-start print:gap-4">
+                  <div className="w-[80px] print:w-[60px] flex justify-center">
                     <img 
                       src={chakra.icon} 
                       alt={chakra.label} 
-                      className="w-16 h-16 object-contain"
+                      className="w-12 h-12 print:w-10 print:h-10 object-contain"
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  <div className="flex-grow pt-2 w-full">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                      <span className="text-xl italic font-medium text-center sm:text-left">{chakra.label}</span>
-                      <div className="flex justify-center sm:justify-end gap-4 sm:gap-6">
-                        <label className="flex items-center gap-2 text-[10px] sm:text-xs uppercase cursor-pointer">
+                  <div className="flex-grow pt-1 w-full">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1 gap-1">
+                      <span className="text-lg italic font-medium text-center sm:text-left print:text-base">{chakra.label}</span>
+                      <div className="flex justify-center sm:justify-end gap-3 sm:gap-4 print:gap-3">
+                        <label className="flex items-center gap-1 text-[10px] sm:text-xs uppercase cursor-pointer print:text-[9px]">
                           <input
                             type="checkbox"
                             checked={formData.chakras[chakra.key as keyof FormData['chakras']].equilibrado}
                             onChange={(e) => updateChakra(chakra.key as keyof FormData['chakras'], 'equilibrado', e.target.checked)}
-                            className="w-4 h-4 accent-stone-800"
+                            className="w-3 h-3 accent-stone-800"
                           />
                           Equilibrado
                         </label>
-                        <label className="flex items-center gap-2 text-[10px] sm:text-xs uppercase cursor-pointer">
+                        <label className="flex items-center gap-1 text-[10px] sm:text-xs uppercase cursor-pointer print:text-[9px]">
                           <input
                             type="checkbox"
                             checked={formData.chakras[chakra.key as keyof FormData['chakras']].desequilibrio}
                             onChange={(e) => updateChakra(chakra.key as keyof FormData['chakras'], 'desequilibrio', e.target.checked)}
-                            className="w-4 h-4 accent-stone-800"
+                            className="w-3 h-3 accent-stone-800"
                           />
                           Desequilíbrio
                         </label>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2">
-                      <span className="text-xs uppercase text-stone-500 whitespace-nowrap">Observações:</span>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1">
+                      <span className="text-[10px] uppercase text-stone-500 whitespace-nowrap print:text-[9px]">Obs:</span>
                       <input
                         type="text"
                         value={formData.chakras[chakra.key as keyof FormData['chakras']].observacoes}
                         onChange={(e) => updateChakra(chakra.key as keyof FormData['chakras'], 'observacoes', e.target.value)}
-                        className="flex-grow border-b border-stone-300 bg-transparent outline-none py-1"
+                        className="flex-grow border-b border-stone-300 bg-transparent outline-none py-0.5 text-sm print:text-xs"
                       />
                     </div>
                   </div>
@@ -448,7 +448,7 @@ export default function App() {
               ))}
             </div>
           </div>
-          <div className="mt-12 text-center text-[10px] uppercase tracking-widest text-stone-400">
+          <div className="mt-6 text-center text-[9px] uppercase tracking-widest text-stone-400 print:mt-4">
             Formulário de Análise Energética — Confidencial
           </div>
         </section>
@@ -486,15 +486,21 @@ export default function App() {
           }
           .print-container {
             width: 100% !important;
-            max-width: 160mm !important;
-            min-height: 250mm !important;
+            max-width: 170mm !important;
             margin: 0 auto !important;
-            padding: 5mm !important;
+            padding: 0 !important;
             box-shadow: none !important;
             background-color: #fdfcf8 !important;
             display: block !important;
             position: relative !important;
             overflow: visible !important;
+          }
+          /* Header Banner adjustment */
+          .mb-12 {
+            margin-bottom: 15px !important;
+          }
+          .mt-6 {
+            margin-top: 10px !important;
           }
           /* Fix for textareas with lines */
           textarea {
@@ -503,15 +509,15 @@ export default function App() {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             color: black !important;
-            font-size: 11pt !important;
-            background-image: linear-gradient(transparent, transparent 27px, #ccc 27px) !important;
-            line-height: 28px !important;
+            font-size: 10pt !important;
+            background-image: linear-gradient(transparent, transparent 23px, #ccc 23px) !important;
+            line-height: 24px !important;
             width: 100% !important;
           }
           /* Ensure sections don't break awkwardly */
           section {
             page-break-inside: avoid;
-            margin-bottom: 25px !important;
+            margin-bottom: 15px !important;
             display: block !important;
             width: 100% !important;
           }
