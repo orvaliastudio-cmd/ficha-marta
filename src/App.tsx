@@ -130,9 +130,9 @@ export default function App() {
   useEffect(() => {
     const clientName = formData.cliente.nomeCompleto.trim();
     if (clientName) {
-      document.title = `Ficha Marta - ${clientName}`;
+      document.title = `Ficha de Atendimento - ${clientName}`;
     } else {
-      document.title = "Ficha Marta - Terapia Integrativa";
+      document.title = "Ficha de Atendimento";
     }
   }, [formData.cliente.nomeCompleto]);
 

@@ -3,7 +3,7 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-document.title = "Ficha de Atendimento - Marta Ana Chiconato";
+document.title = "Ficha de Atendimento";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
