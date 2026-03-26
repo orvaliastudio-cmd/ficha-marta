@@ -204,8 +204,10 @@ export default function App() {
         className="w-full max-w-[160mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 print:m-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
         ref={printRef}
       >
-        {/* Header Banner */}
-        <div className="mb-12">
+        {/* PAGE 1 CONTENT */}
+        <div className="print-page-1">
+          {/* Header Banner */}
+          <div className="mb-12">
           <img 
             src="https://i.ibb.co/3mVPmrm8/marta-perfil-fundo-transparente.png" 
             alt="Banner Marta Ana Chiconato" 
@@ -292,7 +294,7 @@ export default function App() {
         </section>
 
         {/* Section 3: Leitura */}
-        <section className="mb-4 print:mb-0 print:break-after-page">
+        <section className="mb-4 print:mb-0">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             3. LEITURA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -319,9 +321,12 @@ export default function App() {
             </div>
           </div>
         </section>
+        </div> {/* END PAGE 1 CONTENT */}
 
+        {/* PAGE 2 CONTENT */}
+        <div className="print-page-2">
         {/* Section 4: Planos de Consciência */}
-        <section className="mb-8 print:mt-8 print:break-before-page">
+        <section className="mb-8 print:mt-8">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             4. PLANOS DE CONSCIÊNCIA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -383,10 +388,10 @@ export default function App() {
             </div>
           </div>
         </section>
+        </div> {/* END PAGE 2 CONTENT */}
 
-        {/* Page Break for Print - Start Page 3 */}
-        <div className="break-before-page"></div>
-
+        {/* PAGE 3 CONTENT */}
+        <div className="print-page-3">
         {/* Section 7: Pináculos - Now on Page 3 */}
         <section className="mb-6 pt-4 print:pt-0 print:mb-4">
           <div className="text-center mb-6 print:mb-2">
@@ -415,10 +420,10 @@ export default function App() {
             ))}
           </div>
         </section>
+        </div> {/* END PAGE 3 CONTENT */}
 
-        {/* Page Break for Print - Start Page 4 */}
-        <div className="break-before-page"></div>
-
+        {/* PAGE 4 CONTENT */}
+        <div className="print-page-4">
         {/* Section 6: Análise Energética - Chakras - Now on Page 4 */}
         <section className="mb-6 pt-4 print:pt-0 print:mb-4">
           <div className="text-center mb-4 print:mb-2">
@@ -487,6 +492,7 @@ export default function App() {
             Formulário de Análise Energética — Confidencial
           </div>
         </section>
+        </div> {/* END PAGE 4 CONTENT */}
       </motion.div>
 
       {/* Footer - Hidden on Print */}
@@ -603,16 +609,16 @@ export default function App() {
           .col-span-2 {
             grid-column: span 2 / span 2 !important;
           }
-          .print\:break-before-page {
-            break-before: page !important;
-            page-break-before: always !important;
+          .print-page-1 {
+            page-break-after: always !important;
+            break-after: page !important;
             display: block !important;
           }
-          .print\:break-after-page {
-            break-after: page !important;
-            page-break-after: always !important;
+          .print-page-2, .print-page-3, .print-page-4 {
+            page-break-before: always !important;
+            break-before: page !important;
+            padding-top: 10mm !important;
             display: block !important;
-            margin-bottom: 0 !important;
           }
         }
       `}</style>
