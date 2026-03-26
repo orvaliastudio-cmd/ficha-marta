@@ -163,7 +163,7 @@ export default function App() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-[210mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
+        className="w-full max-w-[210mm] mx-auto bg-[#fdfcf8] shadow-xl p-4 sm:p-8 md:p-12 print:shadow-none print:p-0 print:m-0 min-h-screen md:min-h-[297mm] text-stone-900 print-container"
         ref={printRef}
       >
         {/* Header Banner */}
@@ -460,23 +460,33 @@ export default function App() {
       <style>{`
         @media print {
           @page {
-            margin: 15mm;
+            margin: 0;
             size: A4;
+          }
+          html, body {
+            height: auto !important;
+          }
+          * {
+            box-sizing: border-box !important;
           }
           body {
             background: white !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: visible !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
           .print-container {
-            width: 100% !important;
-            max-width: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
+            width: 210mm !important;
+            min-height: 297mm !important;
+            margin: 0 auto !important;
+            padding: 15mm !important;
             box-shadow: none !important;
             background-color: #fdfcf8 !important;
             display: block !important;
-            min-height: 0 !important;
+            position: relative !important;
+            overflow: visible !important;
           }
           /* Fix for textareas with lines */
           textarea {
@@ -488,12 +498,14 @@ export default function App() {
             font-size: 11pt !important;
             background-image: linear-gradient(transparent, transparent 27px, #ccc 27px) !important;
             line-height: 28px !important;
+            width: 100% !important;
           }
           /* Ensure sections don't break awkwardly */
           section {
             page-break-inside: avoid;
             margin-bottom: 25px !important;
             display: block !important;
+            width: 100% !important;
           }
           input::placeholder {
             color: transparent !important;
@@ -526,6 +538,7 @@ export default function App() {
           }
           .grid {
             display: grid !important;
+            gap: 1.5rem !important;
           }
           .flex {
             display: flex !important;
@@ -538,13 +551,6 @@ export default function App() {
           }
           .col-span-2 {
             grid-column: span 2 / span 2 !important;
-          }
-          .gap-6 {
-            gap: 1.5rem !important;
-          }
-          .grid {
-            display: grid !important;
-            gap: 1.5rem !important;
           }
         }
       `}</style>
