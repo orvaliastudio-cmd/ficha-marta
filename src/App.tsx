@@ -169,6 +169,34 @@ export default function App() {
         </div>
       </div>
 
+      {/* Instructions - Visible only on Screen, at the top for better visibility */}
+      <div className="max-w-4xl mx-auto mb-8 px-4 print:hidden">
+        <div className="bg-stone-100 border border-stone-200 rounded-lg p-6 text-stone-700 text-sm shadow-sm">
+          <h4 className="font-bold uppercase tracking-wider mb-4 text-stone-800 flex items-center gap-2">
+            <span className="w-2 h-2 bg-stone-800 rounded-full"></span>
+            Instruções para Impressão e Uso Digital
+          </h4>
+          <ul className="space-y-3">
+            <li className="flex gap-2">
+              <span className="font-bold text-stone-400">•</span>
+              <p><strong>Para Preencher Online:</strong> Clique nos campos de texto e caixas de seleção. Ao finalizar, use o botão <strong>"BAIXAR EM PDF FICHA PREENCHIDA"</strong> e escolha a opção <strong>"Salvar como PDF"</strong>.</p>
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-stone-400">•</span>
+              <p><strong>Para Imprimir com Qualidade:</strong> No menu de impressão, certifique-se de que a opção <strong>"Gráficos de plano de fundo"</strong> esteja marcada para que os símbolos dos Chakras apareçam.</p>
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-stone-400">•</span>
+              <p><strong>Ajuste de Margem:</strong> Selecione <strong>"Ajustar à página"</strong> ou <strong>"Margens: Nenhuma"</strong> para garantir que o layout seja respeitado no papel.</p>
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-stone-400">•</span>
+              <p><strong>Confidencialidade:</strong> Este é um Formulário de Análise Energética Confidencial.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       {/* The Form Content */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -264,7 +292,7 @@ export default function App() {
         </section>
 
         {/* Section 3: Leitura */}
-        <section className="mb-8">
+        <section className="mb-4 print:mb-0">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             3. LEITURA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -296,7 +324,7 @@ export default function App() {
         <div className="break-before-page"></div>
 
         {/* Section 4: Planos de Consciência */}
-        <section className="mb-8">
+        <section className="mb-8 print:mt-4">
           <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-4">
             4. PLANOS DE CONSCIÊNCIA
             <div className="flex-grow border-t border-stone-200"></div>
@@ -465,38 +493,11 @@ export default function App() {
       </motion.div>
 
       {/* Footer - Hidden on Print */}
-      <div className="max-w-4xl mx-auto mt-8 mb-12 px-4 print:hidden">
-        <div className="bg-stone-100 border border-stone-200 rounded-lg p-6 text-stone-700 text-sm shadow-sm mb-8">
-          <h4 className="font-bold uppercase tracking-wider mb-4 text-stone-800 flex items-center gap-2">
-            <span className="w-2 h-2 bg-stone-800 rounded-full"></span>
-            Instruções para Impressão e Uso Digital
-          </h4>
-          <ul className="space-y-3">
-            <li className="flex gap-2">
-              <span className="font-bold text-stone-400">•</span>
-              <p><strong>Para Preencher Online:</strong> Clique nos campos de texto e caixas de seleção. Ao finalizar, use o comando <strong>Ctrl + P</strong> (ou o ícone de imprimir) e escolha a opção <strong>"Salvar como PDF"</strong>.</p>
-            </li>
-            <li className="flex gap-2">
-              <span className="font-bold text-stone-400">•</span>
-              <p><strong>Para Imprimir com Qualidade:</strong> No menu de impressão, certifique-se de que a opção <strong>"Gráficos de plano de fundo"</strong> esteja marcada para que os símbolos dos Chakras apareçam.</p>
-            </li>
-            <li className="flex gap-2">
-              <span className="font-bold text-stone-400">•</span>
-              <p><strong>Ajuste de Margem:</strong> Selecione <strong>"Ajustar à página"</strong> ou <strong>"Margens: Nenhuma"</strong> para garantir que o espaço de 13cm dos Pináculos seja respeitado no papel.</p>
-            </li>
-            <li className="flex gap-2">
-              <span className="font-bold text-stone-400">•</span>
-              <p><strong>Confidencialidade:</strong> Este é um Formulário de Análise Energética Confidencial.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div className="text-center text-stone-500 text-sm">
-          <p>© 2026 Marta Ana Chiconato. Todos os direitos reservados.</p>
-          <p className="mt-2 text-xs">
-            Desenvolvido por <a href="https://www.orvalia.com.br" target="_blank" rel="noopener noreferrer" className="text-[#008686] font-semibold hover:text-[#006666] transition-colors">Orvalia Studio</a>
-          </p>
-        </div>
+      <div className="max-w-4xl mx-auto mt-8 mb-12 px-4 text-center text-stone-500 text-sm print:hidden">
+        <p>© 2026 Marta Ana Chiconato. Todos os direitos reservados.</p>
+        <p className="mt-2 text-xs">
+          Desenvolvido por <a href="https://www.orvalia.com.br" target="_blank" rel="noopener noreferrer" className="text-[#008686] font-semibold hover:text-[#006666] transition-colors">Orvalia Studio</a>
+        </p>
       </div>
 
       {/* Print Styles */}
@@ -532,10 +533,6 @@ export default function App() {
             position: relative !important;
             overflow: visible !important;
             min-height: 297mm !important;
-          }
-          /* Hide everything except the print container */
-          body > :not(.print-container) {
-            display: none !important;
           }
           /* Header Banner adjustment */
           .mb-12 {
@@ -610,10 +607,12 @@ export default function App() {
             grid-column: span 2 / span 2 !important;
           }
           .break-before-page {
+            display: block !important;
             break-before: page !important;
-            height: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
+            page-break-before: always !important;
+            height: 1px !important;
+            margin-top: -1px !important;
+            clear: both !important;
           }
         }
       `}</style>
